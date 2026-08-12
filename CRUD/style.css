@@ -1,0 +1,149 @@
+/* ===== GLOBAL RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+/* ===== BODY ===== */
+body {
+    background: #f5f3ea; /* light khaki */
+    padding: 40px 20px;
+    color: #3e3a2f;
+}
+
+/* ===== CONTAINER BOX ===== */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    background: #ffffff; /* white box */
+    padding: 30px;       /* internal padding */
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 2px solid #c3b091; /* border around box */
+}
+
+/* ===== HEADER ===== */
+h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #807157;
+}
+
+/* ===== BUTTONS ===== */
+button, .btn {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 2px solid #c3b091; /* button border */
+    cursor: pointer;
+    transition: 0.3s ease;
+    background: #c3b091; /* khaki */
+    color: #2f2a1f;
+}
+
+button:hover, .btn:hover {
+    background: #2f2a1f; /* navy blue hover */
+    color: #fff;
+    border-color: #2f2a1f; /* navy border on hover */
+}
+
+/* ===== FORM ===== */
+form {
+    margin-top: 20px;
+    border: 1px solid #c3b091; /* border around form */
+    padding: 20px; /* padding inside form */
+    border-radius: 10px;
+    background: #faf8f2;
+}
+
+form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+form input[type="text"],
+form input[type="email"] {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 18px;
+    border: 1px solid #c3b091; /* input border */
+    border-radius: 6px;
+    background: #ffffff;
+    transition: all 0.3s ease;
+}
+
+form input[type="text"]:hover,
+form input[type="email"]:hover {
+    border-color: #2f2a1f;
+    box-shadow: 0 0 5px rgba(91, 52, 0, 0.3);
+}
+
+/* ===== TABLE ===== */
+.table-wrapper {
+    overflow-x: auto;
+    margin-top: 25px;
+    border: 2px solid #c3b091; /* border around table */
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+thead {
+    background: #c3b091; /* khaki header */
+    color: #2f2a1f;
+}
+
+th, td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #ece6d8;
+}
+
+tr:hover {
+    background: #2f2a1f;; /* navy hover */
+    color: #fff;
+    cursor: pointer;
+}
+
+/* ===== ACTION LINKS INSIDE TABLE ===== */
+.action-links a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #2f2a1f;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.action-links a:hover {
+    color: #2f2a1f;; /* navy hover */
+}
+
+/* ===== ALERT / MESSAGES ===== */
+.alert-success {
+    background: #e6dfcc;
+    color: #4b442f;
+    padding: 14px 18px;
+    border-radius: 8px;
+    border: 1px solid #c3b091; /* border for alert */
+    margin-bottom: 20px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    body {
+        padding: 25px 15px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+}
