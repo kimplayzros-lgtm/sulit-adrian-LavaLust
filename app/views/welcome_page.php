@@ -17,7 +17,7 @@ $student = [
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clark's Student Desk</title>
+    <title>Kim Sulit Desk</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -452,7 +452,7 @@ $student = [
         <header class="topbar">
             <div class="brand">
                 <span class="brand-mark" aria-label="student avatar"></span>
-                <span>CLARK'S STUDENT DESK</span>
+                <span>KIM SULIT DESK</span>
             </div>
             <div style="display:flex; align-items:center; gap:12px;">
                 <a class="home-btn" href="#">Home</a>
@@ -463,9 +463,9 @@ $student = [
         <section class="hero">
             <div class="hero-copy">
                 <div class="tag">Student Information</div>
-                <h1 class="hero-title">Welcome,<br>Student<br>User.</h1>
+                <h1 class="hero-title">Welcome,<br>Kim<br>Sulit.</h1>
                 <div class="hero-sub">A bright little corner for the essential details of a BS Information Technology student.</div>
-                <div class="hero-meta"><span class="dot"></span> Mcc / 3f4 / 3rd year</div>
+                <div class="hero-meta"><span class="dot"></span> MCC / 3F4 / 3rd year</div>
             </div>
 
             <div class="access-panel">
@@ -480,7 +480,7 @@ $student = [
         </section>
 
         <section class="profile-section">
-            <h2 class="profile-title">Student profile</h2>
+            <h2 class="profile-title">Kim Sulit desk</h2>
 
             <div class="profile-layout">
                 <aside class="profile-card">
