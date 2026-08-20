@@ -11,29 +11,26 @@ class ProfileAccessMiddleware
         }
 
         $submittedName = trim((string) ($_GET['student_name'] ?? $_POST['student_name'] ?? ''));
-        $expectedName = 'CYRUS KIM ADRIAN D. SULIT';
+        $accessFlag = trim((string) ($_GET['access'] ?? $_POST['access'] ?? ''));
 
+        // Allow when a name is submitted in the request
         if (!empty($submittedName)) {
-            if (strcasecmp($submittedName, $expectedName) === 0) {
-                $_SESSION['profile_access'] = true;
-                $_SESSION['student_name'] = $expectedName;
-            } else {
-                unset($_SESSION['profile_access']);
-                unset($_SESSION['student_name']);
-                header('Location: /');
-                exit;
-            }
-        } else {
-            unset($_SESSION['profile_access']);
-            unset($_SESSION['student_name']);
-            header('Location: /');
-            exit;
+            $_SESSION['profile_access'] = true;
+            $_SESSION['student_name'] = $submittedName;
+            return $next();
         }
 
-        if (empty($_SESSION['profile_access'])) {
-            header('Location: /');
-            exit;
+        // Allow when an access flag was submitted and we already have a session name
+        if (!empty($accessFlag) && !empty($_SESSION['student_name'])) {
+            $_SESSION['profile_access'] = true;
+            return $next();
         }
+
+        // Block otherwise
+        unset($_SESSION['profile_access']);
+        unset($_SESSION['student_name']);
+        header('Location: /');
+        exit;
 
         return $next();
     }

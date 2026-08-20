@@ -121,6 +121,10 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             align-items: center;
         }
 
+        .name-form.hidden-submit {
+            display: none;
+        }
+
         .name-input {
             flex: 1 1 220px;
             min-width: 220px;
@@ -251,7 +255,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
                         a professional tone, and a direct path to the protected profile record.
                     </p>
 
-                    <form class="name-form" method="get" action="/profile">
+                    <form class="name-form" method="get" action="/profile" id="nameForm">
                         <input
                             class="name-input"
                             type="text"
@@ -288,6 +292,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
     <script>
         const nameInput = document.querySelector('.name-input');
         const openProfileBtn = document.getElementById('openProfileBtn');
+        const nameForm = document.getElementById('nameForm');
 
         function updateProfileButtonState() {
             const hasName = (nameInput.value || '').trim().length > 0;
@@ -297,7 +302,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         nameInput.addEventListener('input', updateProfileButtonState);
         updateProfileButtonState();
 
-        document.querySelector('.name-form').addEventListener('submit', function (event) {
+        nameForm.addEventListener('submit', function (event) {
             if ((nameInput.value || '').trim().length === 0) {
                 event.preventDefault();
                 nameInput.focus();
