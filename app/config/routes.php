@@ -45,7 +45,8 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 /** @var object $router **/
 
 $router->get('/', 'Welcome::index');
-$router->get('/profile', 'Profile::index')->middleware('profile_auth');
+// Protect /profile so a name must be submitted from the home page first
+$router->get('/profile', 'Profile::index')->middleware('student_profile_auth');
 
 // Student profile route guarded by student_profile_auth middleware
 $router->get('/student/profile', 'Profile::student')->middleware('student_profile_auth');
