@@ -46,3 +46,6 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
 $router->get('/', 'Welcome::index');
 $router->get('/profile', 'Profile::index')->middleware('profile_auth');
+
+// Student profile route guarded by student_profile_auth middleware
+$router->get('/student/profile', 'Profile::student')->middleware('student_profile_auth');

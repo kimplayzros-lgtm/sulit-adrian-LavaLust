@@ -42,9 +42,11 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 |
 */
 require_once APP_DIR . 'middlewares/ProfileAccessMiddleware.php';
+require_once APP_DIR . 'middlewares/StudentProfileMiddleware.php';
 
 get_config([
     'middlewares' => [
         'profile_auth' => new ProfileAccessMiddleware(),
+        'student_profile_auth' => new StudentProfileMiddleware(),
     ],
 ]);

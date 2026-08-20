@@ -256,21 +256,27 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
                     </p>
 
                     <form class="name-form" method="get" action="/profile" id="nameForm">
-                        <input
-                            class="name-input"
-                            type="text"
-                            name="student_name"
-                            placeholder="Type your name"
-                            aria-label="Type your name"
-                            required
-                        >
-                        <input type="hidden" name="access" value="1">
-                        <button class="btn btn-primary" type="submit" id="openProfileBtn">Open Profile</button>
+                            <input
+                                class="name-input"
+                                type="text"
+                                name="student_name"
+                                placeholder="Type your name"
+                                aria-label="Type your name"
+                                required
+                            >
+                            <input type="hidden" name="access" value="1">
+                            <button class="btn btn-primary" type="submit" id="openProfileBtn">Open Profile</button>
                     </form>
 
-                    <div class="notice">
-                        Profile access is restricted. You must type your name before the profile page can be opened.
-                    </div>
+                        <?php if (!empty($_GET['warning']) && $_GET['warning'] === 'need_name'): ?>
+                            <div class="notice" style="background: rgba(236, 72, 153, 0.06); border-color: rgba(236,72,153,0.2); color: #8b2136;">
+                                You need to type your name before accessing the student profile.
+                            </div>
+                        <?php else: ?>
+                            <div class="notice">
+                                Profile access is restricted. You must type your name before the profile page can be opened.
+                            </div>
+                        <?php endif; ?>
 
                     <div class="cta-row">
                         <a class="btn btn-secondary" href="/">Refresh Home</a>
