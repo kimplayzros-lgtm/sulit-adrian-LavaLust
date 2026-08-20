@@ -110,6 +110,31 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             display: flex;
             gap: 14px;
             flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .name-form {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .name-input {
+            flex: 1 1 220px;
+            min-width: 220px;
+            padding: 14px 16px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            font-size: 1rem;
+            color: var(--ink);
+            background: #fff;
+        }
+
+        .name-input:focus {
+            outline: 2px solid rgba(36, 54, 77, 0.14);
+            border-color: var(--navy);
         }
 
         .btn {
@@ -121,6 +146,9 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             font-weight: 700;
             text-decoration: none;
             transition: 0.2s ease;
+            border: none;
+            cursor: pointer;
+            font: inherit;
         }
 
         .btn-primary {
@@ -130,6 +158,11 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
         .btn-primary:hover {
             background: var(--navy);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
         }
 
         .btn-secondary {
@@ -207,8 +240,20 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
                         a professional tone, and a direct path to the protected profile record.
                     </p>
 
+                    <form class="name-form" method="get" action="/profile">
+                        <input
+                            class="name-input"
+                            type="text"
+                            name="student_name"
+                            placeholder="Type your name"
+                            aria-label="Type your name"
+                            required
+                        >
+                        <input type="hidden" name="access" value="1">
+                        <button class="btn btn-primary" type="submit" id="openProfileBtn">Open Profile</button>
+                    </form>
+
                     <div class="cta-row">
-                        <a class="btn btn-primary" href="/profile?access=1">Open Profile</a>
                         <a class="btn btn-secondary" href="/">Refresh Home</a>
                     </div>
                 </section>
@@ -225,5 +270,25 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             </div>
         </div>
     </div>
+    <script>
+        const nameInput = document.querySelector('.name-input');
+        const openProfileBtn = document.getElementById('openProfileBtn');
+
+        function updateProfileButtonState() {
+            const hasName = (nameInput.value || '').trim().length > 0;
+            openProfileBtn.disabled = !hasName;
+        }
+
+        nameInput.addEventListener('input', updateProfileButtonState);
+        updateProfileButtonState();
+
+        document.querySelector('.name-form').addEventListener('submit', function (event) {
+            if ((nameInput.value || '').trim().length === 0) {
+                event.preventDefault();
+                nameInput.focus();
+                openProfileBtn.disabled = true;
+            }
+        });
+    </script>
 </body>
 </html>
