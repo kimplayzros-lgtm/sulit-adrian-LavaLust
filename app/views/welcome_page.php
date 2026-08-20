@@ -1,262 +1,542 @@
 <?php
 defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
+
+$student = [
+    'id' => 'MCC2024-00182',
+    'name' => 'CYRUS KIM ADRIAN D. SULIT',
+    'course' => 'BS Information Technology',
+    'year' => '3rd Year',
+    'section' => '3-F4',
+    'email' => 'kimplayzros@gmial.com',
+    'address' => 'Sta Isabel, Calapan City, Oriental Mindoro',
+    'contact' => '+63 0961 653 3431',
+];
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to LavaLust</title>
-    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clark's Student Desk</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700;800&family=Unbounded:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
         :root {
-            --lava: #dd4814;
-            --lava-dim: #b83a10;
-            --lava-glow: rgba(221,72,20,0.15);
-            --lava-glow-strong: rgba(221,72,20,0.25);
-            --bg: #0a0a0b;
-            --bg2: #111113;
-            --bg3: #18181b;
-            --border: rgba(255,255,255,0.07);
-            --border-hot: rgba(221,72,20,0.35);
-            --text: #f4f4f5;
-            --text-muted: #71717a;
-            --text-dim: #3f3f46;
-            --mono: 'JetBrains Mono', monospace;
-            --sans: 'Unbounded', sans-serif;
+            --bg: #f5f0e5;
+            --panel: #f3f1ea;
+            --card: #f4f0e9;
+            --ink: #1c1b1a;
+            --muted: #5d5a57;
+            --gold: #f3c94c;
+            --gold-deep: #f2b90d;
+            --line: #202020;
+            --shadow: #1a1a1a;
         }
 
-        html { scroll-behavior: smooth; }
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0;
+            min-height: 100%;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'Inter', sans-serif;
+        }
 
         body {
-            font-family: var(--sans);
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            overflow-x: hidden;
+            padding: 26px 24px 70px;
         }
 
-        /* ── NOISE TEXTURE ── */
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.6;
-        }
-
-        /* ── GRID BACKGROUND ── */
-        body::after {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(var(--border) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border) 1px, transparent 1px);
-            background-size: 60px 60px;
-            pointer-events: none;
-            z-index: 0;
-            mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 100%);
-        }
-
-        /* ── GLOW ORBS ── */
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(120px);
-            pointer-events: none;
-            z-index: 0;
-        }
-        .orb-1 {
-            width: 600px; height: 600px;
-            top: -200px; left: -100px;
-            background: radial-gradient(circle, rgba(221,72,20,0.12) 0%, transparent 70%);
-        }
-        .orb-2 {
-            width: 400px; height: 400px;
-            top: 200px; right: -100px;
-            background: radial-gradient(circle, rgba(221,72,20,0.07) 0%, transparent 70%);
-        }
-
-        /* ── LAYOUT ── */
-        .wrap {
-            position: relative;
-            z-index: 1;
-            max-width: 1100px;
+        .page {
+            max-width: 1450px;
             margin: 0 auto;
-            padding: 0 2rem;
+            background: rgba(255,255,255,0.12);
+            border: 4px solid var(--line);
+            box-shadow: 12px 12px 0 var(--gold-deep);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* ── NAV ── */
-        nav {
-            position: relative;
-            z-index: 10;
+        .page::before {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 10px;
+            height: 100%;
+            background: var(--gold);
+        }
+
+        .topbar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 1.5rem 2rem;
-            border-bottom: 1px solid var(--border);
-            backdrop-filter: blur(12px);
-            background: rgba(10,10,11,0.6);
-            max-width: 100%;
+            padding: 18px 28px 18px 22px;
+            border-bottom: 4px solid var(--line);
+            background: rgba(255,255,255,0.18);
         }
 
-        .nav-logo {
+        .brand {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
-            font-size: 1.1rem;
+            gap: 14px;
+            font-family: 'Cormorant Garamond', serif;
             font-weight: 700;
-            letter-spacing: -0.02em;
-            color: var(--text);
-            text-decoration: none;
+            font-size: clamp(2rem, 2.6vw, 2.7rem);
+            letter-spacing: -0.04em;
         }
 
-        .nav-logo .flame {
-            width: 28px; height: 28px;
-            background: var(--lava);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            box-shadow: 0 0 20px var(--lava-glow-strong);
+        .brand-mark {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 3px solid var(--line);
+            background: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80') center/cover no-repeat;
+            box-shadow: 0 0 0 4px rgba(0,0,0,0.05);
         }
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            padding: 0.4rem 0.8rem;
-            border-radius: 6px;
-            transition: color 0.2s, background 0.2s;
-        }
-
-        .nav-links a:hover { color: var(--text); background: var(--bg3); }
-
-        .nav-links .btn-nav {
-            color: var(--text);
-            background: var(--lava);
-            padding: 0.4rem 1rem;
-            border-radius: 6px;
-            margin-left: 0.5rem;
-            transition: background 0.2s, box-shadow 0.2s;
-        }
-
-        .nav-links .btn-nav:hover {
-            background: var(--lava-dim);
-            box-shadow: 0 0 20px var(--lava-glow-strong);
-        }
-
-        /* ── HERO ── */
-        .hero {
-            padding: 7rem 2rem 5rem;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .badge {
+        .home-btn,
+        .pdf-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            background: rgba(221,72,20,0.1);
-            border: 1px solid var(--border-hot);
-            color: #f97316;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 0.35rem 0.9rem;
-            border-radius: 999px;
-            margin-bottom: 2rem;
-            font-family: var(--mono);
+            justify-content: center;
+            min-width: 120px;
+            height: 46px;
+            padding: 0 20px;
+            border: 3px solid var(--line);
+            background: #f2f0ea;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--ink);
+            text-decoration: none;
+            box-shadow: 6px 6px 0 var(--gold);
+            cursor: pointer;
+            font-family: inherit;
         }
 
-        .badge::before {
-            content: '';
-            width: 6px; height: 6px;
-            background: var(--lava);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--lava);
-            animation: pulse 2s ease-in-out infinite;
+        .pdf-btn {
+            margin-left: 12px;
+            background: var(--gold);
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--lava); }
-            50% { opacity: 0.5; box-shadow: 0 0 3px var(--lava); }
+        .hero {
+            display: grid;
+            grid-template-columns: 1.35fr 0.95fr;
+            gap: 40px;
+            padding: 52px 42px 46px;
+            min-height: 620px;
+            background: #f5f2ec;
         }
 
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
+        .hero-copy {
+            padding-top: 20px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--gold);
+            border: 3px solid var(--line);
+            padding: 8px 14px 7px;
+            font-size: 1.2rem;
             font-weight: 800;
-            line-height: 1;
-            letter-spacing: -0.04em;
-            margin-bottom: 1.5rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            box-shadow: 4px 4px 0 var(--line);
         }
 
-        .hero h1 .word-lava { color: var(--lava); }
-        .hero h1 .word-lust {
-            color: transparent;
-            -webkit-text-stroke: 1.5px rgba(255,255,255,0.3);
+        .hero-title {
+            margin: 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            line-height: 0.78;
+            font-size: clamp(5rem, 8vw, 15rem);
+            letter-spacing: -0.08em;
+            text-transform: none;
         }
 
         .hero-sub {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            max-width: 520px;
-            margin: 0 auto 2.5rem;
-            line-height: 1.7;
-            font-weight: 400;
+            margin-top: 28px;
+            max-width: 580px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 2vw, 3rem);
+            line-height: 1.1;
+            font-style: italic;
+            color: rgba(24,24,24,0.9);
         }
 
-        .hero-actions {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
+        .hero-meta {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            font-family: var(--sans);
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s;
-            cursor: pointer;
-            border: none;
+            gap: 12px;
+            margin-top: 28px;
+            font-size: 1rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--ink);
         }
 
-        .btn-primary {
-            background: var(--lava);
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 2px solid var(--line);
+            box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
+        }
+
+        .access-panel {
+            align-self: center;
+            background: rgba(255,255,255,0.08);
+            margin-top: 30px;
+            padding: 20px 0 0;
+        }
+
+        .panel-box {
+            position: relative;
+            background: #f3f0e7;
+            border: 3px solid var(--line);
+            min-height: 380px;
+            padding: 28px 28px 22px;
+            box-shadow: 10px 10px 0 var(--gold);
+        }
+
+        .panel-box::before {
+            content: "01";
+            position: absolute;
+            right: 18px;
+            top: -18px;
+            background: var(--line);
             color: #fff;
-            box-shadow: 0 0 0 0 var(--lava-glow);
+            font-weight: 800;
+            font-size: 1.2rem;
+            padding: 8px 11px 7px;
+            min-width: 54px;
+            text-align: center;
         }
 
-        .btn-primary:hover {
-            background: var(--lava-dim);
-            box-shadow: 0 0 30px var(--lava-glow-strong), 0 4px 15px rgba(0,0,0,0.3);
-            transform: translateY(-1px);
+        .panel-title {
+            margin: 0 0 16px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 3vw, 4rem);
+            line-height: 0.9;
+            font-weight: 700;
         }
+
+        .panel-sub {
+            margin: 0 0 18px;
+            font-size: 1.1rem;
+            color: rgba(24,24,24,0.85);
+            line-height: 1.5;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+
+        .field-label {
+            display: block;
+            margin: 18px 0 10px;
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink);
+        }
+
+        .field-input {
+            width: 100%;
+            height: 54px;
+            border: 3px solid var(--line);
+            background: rgba(255,255,255,0.15);
+            font-size: 1.1rem;
+            padding: 0 12px;
+            outline: none;
+            color: var(--ink);
+        }
+
+        .primary-btn {
+            display: block;
+            width: 100%;
+            height: 58px;
+            margin-top: 18px;
+            border: 3px solid var(--line);
+            background: var(--gold);
+            color: var(--ink);
+            font-size: 1.05rem;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.95);
+        }
+
+        .profile-section {
+            padding: 14px 34px 46px;
+            background: #f5f2ec;
+        }
+
+        .profile-title {
+            margin: 0 0 26px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: clamp(5rem, 9vw, 12rem);
+            line-height: 0.8;
+            letter-spacing: -0.07em;
+        }
+
+        .profile-layout {
+            display: grid;
+            grid-template-columns: minmax(300px, 420px) minmax(0, 1fr);
+            gap: 40px;
+            align-items: start;
+        }
+
+        .profile-card {
+            background: #f3f0e7;
+            border: 3px solid var(--line);
+            box-shadow: 8px 8px 0 var(--gold);
+            padding: 26px 26px 20px;
+            min-height: 560px;
+            position: relative;
+        }
+
+        .profile-image-wrap {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 22px;
+        }
+
+        .profile-image {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            border: 3px solid var(--line);
+            object-fit: cover;
+            box-shadow: 0 0 0 10px rgba(0,0,0,0.06);
+            background: #ddd;
+        }
+
+        .online {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 3px solid var(--line);
+            right: 66px;
+            bottom: 32px;
+        }
+
+        .student-name {
+            margin: 0;
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: clamp(2.5rem, 3vw, 4rem);
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+        }
+
+        .course-pill {
+            display: block;
+            width: 100%;
+            margin-top: 18px;
+            background: var(--ink);
+            color: #f4f0e9;
+            text-align: center;
+            font-size: 0.92rem;
+            letter-spacing: 0.18em;
+            font-weight: 800;
+            padding: 14px 0;
+            text-transform: uppercase;
+            border: 3px solid var(--line);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px 20px;
+        }
+
+        .info-box {
+            background: rgba(255,255,255,0.08);
+            border: 3px solid rgba(32,32,32,0.8);
+            min-height: 110px;
+            padding: 18px 16px 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 0 0 1px rgba(32,32,32,0.05);
+        }
+
+        .info-label {
+            display: block;
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
+            color: #54514f;
+            margin-bottom: 10px;
+            font-weight: 600;
+            text-transform: lowercase;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-style: italic;
+        }
+
+        .info-value {
+            display: block;
+            font-size: clamp(1.1rem, 1.6vw, 2.4rem);
+            line-height: 1.2;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .info-box.wide {
+            grid-column: span 2;
+            min-height: 92px;
+        }
+
+        .info-box.contact {
+            min-height: 84px;
+        }
+
+        @media (max-width: 980px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 16px 12px 32px;
+            }
+
+            .topbar {
+                padding: 14px 16px;
+            }
+
+            .brand {
+                font-size: 1.7rem;
+            }
+
+            .home-btn,
+            .pdf-btn {
+                min-width: 90px;
+                height: 40px;
+                font-size: 0.95rem;
+            }
+
+            .hero, .profile-section {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-box.wide {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-mark" aria-label="student avatar"></span>
+                <span>CLARK'S STUDENT DESK</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px;">
+                <a class="home-btn" href="#">Home</a>
+                <button class="pdf-btn" type="button" onclick="window.print()">Save as PDF</button>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="hero-copy">
+                <div class="tag">Student Information</div>
+                <h1 class="hero-title">Welcome,<br>Student<br>User.</h1>
+                <div class="hero-sub">A bright little corner for the essential details of a BS Information Technology student.</div>
+                <div class="hero-meta"><span class="dot"></span> Mcc / 3f4 / 3rd year</div>
+            </div>
+
+            <div class="access-panel">
+                <div class="panel-box">
+                    <h2 class="panel-title">Profile access</h2>
+                    <p class="panel-sub">Verify the student name to open the full profile.</p>
+                    <label class="field-label" for="student-name">Student Name</label>
+                    <input class="field-input" id="student-name" type="text" value="<?= htmlspecialchars($student['name']) ?>" />
+                    <button class="primary-btn" type="button">Open student profile</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="profile-section">
+            <h2 class="profile-title">Student profile</h2>
+
+            <div class="profile-layout">
+                <aside class="profile-card">
+                    <div class="profile-image-wrap">
+                        <img class="profile-image" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80" alt="Student portrait" />
+                        <span class="online" aria-label="online status"></span>
+                    </div>
+
+                    <h3 class="student-name"><?= htmlspecialchars($student['name']) ?></h3>
+                    <span class="course-pill"><?= htmlspecialchars($student['course']) ?></span>
+                </aside>
+
+                <div class="info-grid">
+                    <div class="info-box">
+                        <span class="info-label">Student ID</span>
+                        <span class="info-value"><?= htmlspecialchars($student['id']) ?></span>
+                    </div>
+                    <div class="info-box">
+                        <span class="info-label">Name</span>
+                        <span class="info-value"><?= htmlspecialchars($student['name']) ?></span>
+                    </div>
+
+                    <div class="info-box">
+                        <span class="info-label">Course</span>
+                        <span class="info-value"><?= htmlspecialchars($student['course']) ?></span>
+                    </div>
+                    <div class="info-box">
+                        <span class="info-label">Year level</span>
+                        <span class="info-value"><?= htmlspecialchars($student['year']) ?></span>
+                    </div>
+
+                    <div class="info-box">
+                        <span class="info-label">Section</span>
+                        <span class="info-value"><?= htmlspecialchars($student['section']) ?></span>
+                    </div>
+                    <div class="info-box">
+                        <span class="info-label">Email</span>
+                        <span class="info-value"><?= htmlspecialchars($student['email']) ?></span>
+                    </div>
+
+                    <div class="info-box wide">
+                        <span class="info-label">Address</span>
+                        <span class="info-value"><?= htmlspecialchars($student['address']) ?></span>
+                    </div>
+
+                    <div class="info-box contact" style="grid-column: 1 / -1;">
+                        <span class="info-label">Contact</span>
+                        <span class="info-value"><?= htmlspecialchars($student['contact']) ?></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+
 
         .btn-ghost {
             background: transparent;
