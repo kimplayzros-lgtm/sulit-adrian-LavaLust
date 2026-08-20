@@ -204,6 +204,17 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             line-height: 1.8;
         }
 
+        .notice {
+            margin-top: 12px;
+            padding: 12px 14px;
+            background: rgba(49, 163, 109, 0.08);
+            border: 1px solid rgba(49, 163, 109, 0.2);
+            border-radius: 12px;
+            color: var(--deep);
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
         @media (max-width: 760px) {
             .shell {
                 margin: 28px 14px;
@@ -252,6 +263,10 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
                         <input type="hidden" name="access" value="1">
                         <button class="btn btn-primary" type="submit" id="openProfileBtn">Open Profile</button>
                     </form>
+
+                    <div class="notice">
+                        Profile access is restricted. You must type your name before the profile page can be opened.
+                    </div>
 
                     <div class="cta-row">
                         <a class="btn btn-secondary" href="/">Refresh Home</a>
