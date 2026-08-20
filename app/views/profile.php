@@ -1,13 +1,12 @@
 <?php
 defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
-
-$student = [
+$student = $student ?? [
     'id' => 'MCC2024-00182',
     'name' => 'CYRUS KIM ADRIAN D. SULIT',
     'course' => 'BS Information Technology',
     'year' => '3rd Year',
     'section' => '3-F4',
-    'email' => 'kimplayzros@gmial.com',
+    'email' => 'kimplayzros@gmail.com',
     'address' => 'Sta Isabel, Calapan City, Oriental Mindoro',
     'contact' => '+63 0961 653 3431',
 ];
@@ -17,7 +16,7 @@ $student = [
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kim Sulit Desk</title>
+    <title>Kim Sulit Desk | Profile</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -77,6 +76,15 @@ $student = [
             border-radius: 50%;
             background: var(--green);
             box-shadow: 0 0 0 4px rgba(49, 163, 109, 0.12);
+        }
+
+        .nav-link {
+            color: var(--navy);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
         .profile-wrap {
@@ -182,6 +190,7 @@ $student = [
                 <span class="brand-mark"></span>
                 <span>Kim Sulit Desk</span>
             </div>
+            <a href="/" class="nav-link">Back to Home</a>
         </header>
 
         <main class="profile-wrap">
