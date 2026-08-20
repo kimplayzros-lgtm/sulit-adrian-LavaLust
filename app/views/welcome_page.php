@@ -23,15 +23,17 @@ $student = [
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #f5f0e5;
-            --panel: #f3f1ea;
-            --card: #f4f0e9;
-            --ink: #1c1b1a;
-            --muted: #5d5a57;
-            --gold: #f3c94c;
-            --gold-deep: #f2b90d;
-            --line: #202020;
-            --shadow: #1a1a1a;
+            --bg: #edf2f6;
+            --panel: #ffffff;
+            --panel-alt: #f7f9fb;
+            --ink: #1f2a37;
+            --muted: #5a697a;
+            --accent: #2d4055;
+            --accent-soft: #dfe8f1;
+            --line: #d7dee7;
+            --soft-gold: #c7b38a;
+            --soft-gold-deep: #a58e67;
+            --shadow: rgba(31, 42, 55, 0.12);
         }
 
         * { box-sizing: border-box; }
@@ -39,7 +41,7 @@ $student = [
         html, body {
             margin: 0;
             min-height: 100%;
-            background: var(--bg);
+            background: linear-gradient(180deg, #eef3f7 0%, #e7edf3 100%);
             color: var(--ink);
             font-family: 'Inter', sans-serif;
         }
@@ -51,9 +53,9 @@ $student = [
         .page {
             max-width: 1450px;
             margin: 0 auto;
-            background: rgba(255,255,255,0.12);
-            border: 4px solid var(--line);
-            box-shadow: 12px 12px 0 var(--gold-deep);
+            background: rgba(255,255,255,0.72);
+            border: 1px solid var(--line);
+            box-shadow: 0 20px 40px var(--shadow);
             position: relative;
             overflow: hidden;
         }
@@ -63,9 +65,9 @@ $student = [
             position: absolute;
             right: 0;
             top: 0;
-            width: 10px;
+            width: 8px;
             height: 100%;
-            background: var(--gold);
+            background: linear-gradient(180deg, var(--accent) 0%, var(--soft-gold) 100%);
         }
 
         .topbar {
@@ -73,27 +75,29 @@ $student = [
             align-items: center;
             justify-content: space-between;
             padding: 18px 28px 18px 22px;
-            border-bottom: 4px solid var(--line);
-            background: rgba(255,255,255,0.18);
+            border-bottom: 1px solid var(--line);
+            background: rgba(255,255,255,0.7);
         }
 
         .brand {
             display: flex;
             align-items: center;
             gap: 14px;
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 700;
-            font-size: clamp(2rem, 2.6vw, 2.7rem);
-            letter-spacing: -0.04em;
+            font-size: clamp(1.2rem, 2vw, 2rem);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
         }
 
         .brand-mark {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            border: 3px solid var(--line);
-            background: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80') center/cover no-repeat;
-            box-shadow: 0 0 0 4px rgba(0,0,0,0.05);
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            border: 1px solid var(--line);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--muted) 100%);
+            box-shadow: inset 0 0 0 4px rgba(255,255,255,0.5);
         }
 
         .home-btn,
@@ -101,23 +105,32 @@ $student = [
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-width: 120px;
-            height: 46px;
-            padding: 0 20px;
-            border: 3px solid var(--line);
-            background: #f2f0ea;
-            font-size: 1.1rem;
-            font-weight: 500;
+            min-width: 118px;
+            height: 42px;
+            padding: 0 18px;
+            border: 1px solid var(--line);
+            background: var(--panel);
+            font-size: 0.92rem;
+            font-weight: 600;
             color: var(--ink);
             text-decoration: none;
-            box-shadow: 6px 6px 0 var(--gold);
+            box-shadow: 0 4px 0 rgba(45, 64, 85, 0.14);
             cursor: pointer;
             font-family: inherit;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .home-btn:hover,
+        .pdf-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 0 rgba(45, 64, 85, 0.14);
         }
 
         .pdf-btn {
             margin-left: 12px;
-            background: var(--gold);
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
         }
 
         .hero {
@@ -126,7 +139,7 @@ $student = [
             gap: 40px;
             padding: 52px 42px 46px;
             min-height: 620px;
-            background: #f5f2ec;
+            background: linear-gradient(180deg, #f3f7fa 0%, #edf2f7 100%);
         }
 
         .hero-copy {
@@ -135,35 +148,33 @@ $student = [
 
         .tag {
             display: inline-block;
-            background: var(--gold);
-            border: 3px solid var(--line);
+            background: var(--accent-soft);
+            border: 1px solid var(--line);
             padding: 8px 14px 7px;
-            font-size: 1.2rem;
-            font-weight: 800;
+            font-size: 0.82rem;
+            font-weight: 700;
             letter-spacing: 0.12em;
             text-transform: uppercase;
             margin-bottom: 18px;
-            box-shadow: 4px 4px 0 var(--line);
+            color: var(--accent);
         }
 
         .hero-title {
             margin: 0;
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 700;
-            line-height: 0.78;
-            font-size: clamp(5rem, 8vw, 15rem);
-            letter-spacing: -0.08em;
-            text-transform: none;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            line-height: 0.92;
+            font-size: clamp(3.6rem, 6vw, 8rem);
+            letter-spacing: -0.06em;
+            color: var(--ink);
         }
 
         .hero-sub {
             margin-top: 28px;
             max-width: 580px;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 2vw, 3rem);
-            line-height: 1.1;
-            font-style: italic;
-            color: rgba(24,24,24,0.9);
+            font-size: clamp(1.25rem, 2vw, 2rem);
+            line-height: 1.45;
+            color: var(--muted);
         }
 
         .hero-meta {
@@ -171,36 +182,34 @@ $student = [
             align-items: center;
             gap: 12px;
             margin-top: 28px;
-            font-size: 1rem;
+            font-size: 0.8rem;
             letter-spacing: 0.12em;
             text-transform: uppercase;
             font-weight: 700;
-            color: var(--ink);
+            color: var(--accent);
         }
 
         .dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: var(--gold);
-            border: 2px solid var(--line);
-            box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
+            background: var(--soft-gold);
+            border: 2px solid var(--accent);
         }
 
         .access-panel {
             align-self: center;
-            background: rgba(255,255,255,0.08);
             margin-top: 30px;
             padding: 20px 0 0;
         }
 
         .panel-box {
             position: relative;
-            background: #f3f0e7;
-            border: 3px solid var(--line);
+            background: var(--panel);
+            border: 1px solid var(--line);
             min-height: 380px;
             padding: 28px 28px 22px;
-            box-shadow: 10px 10px 0 var(--gold);
+            box-shadow: 0 16px 28px rgba(31, 42, 55, 0.08);
         }
 
         .panel-box::before {
@@ -208,48 +217,47 @@ $student = [
             position: absolute;
             right: 18px;
             top: -18px;
-            background: var(--line);
+            background: var(--accent);
             color: #fff;
-            font-weight: 800;
-            font-size: 1.2rem;
-            padding: 8px 11px 7px;
-            min-width: 54px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 8px 10px;
+            min-width: 48px;
             text-align: center;
+            letter-spacing: 0.08em;
         }
 
         .panel-title {
             margin: 0 0 16px;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 3vw, 4rem);
-            line-height: 0.9;
+            font-size: clamp(2rem, 2.8vw, 3rem);
+            line-height: 1.1;
             font-weight: 700;
+            color: var(--ink);
         }
 
         .panel-sub {
             margin: 0 0 18px;
-            font-size: 1.1rem;
-            color: rgba(24,24,24,0.85);
-            line-height: 1.5;
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.6;
         }
 
         .field-label {
             display: block;
             margin: 18px 0 10px;
-            font-size: 0.95rem;
-            font-weight: 800;
-            letter-spacing: 0.08em;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--ink);
+            color: var(--muted);
         }
 
         .field-input {
             width: 100%;
             height: 54px;
-            border: 3px solid var(--line);
-            background: rgba(255,255,255,0.15);
-            font-size: 1.1rem;
+            border: 1px solid var(--line);
+            background: var(--panel-alt);
+            font-size: 1rem;
             padding: 0 12px;
             outline: none;
             color: var(--ink);
@@ -258,30 +266,30 @@ $student = [
         .primary-btn {
             display: block;
             width: 100%;
-            height: 58px;
+            height: 54px;
             margin-top: 18px;
-            border: 3px solid var(--line);
-            background: var(--gold);
-            color: var(--ink);
-            font-size: 1.05rem;
-            font-weight: 800;
+            border: 1px solid var(--accent);
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.98rem;
+            font-weight: 700;
             letter-spacing: 0.02em;
             cursor: pointer;
-            box-shadow: 6px 6px 0 rgba(0,0,0,0.95);
+            box-shadow: 0 6px 0 rgba(45, 64, 85, 0.15);
         }
 
         .profile-section {
             padding: 14px 34px 46px;
-            background: #f5f2ec;
+            background: linear-gradient(180deg, #f0f5f8 0%, #ebf1f5 100%);
         }
 
         .profile-title {
             margin: 0 0 26px;
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 700;
-            font-size: clamp(5rem, 9vw, 12rem);
-            line-height: 0.8;
-            letter-spacing: -0.07em;
+            font-weight: 800;
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            color: var(--ink);
         }
 
         .profile-layout {
@@ -292,9 +300,9 @@ $student = [
         }
 
         .profile-card {
-            background: #f3f0e7;
-            border: 3px solid var(--line);
-            box-shadow: 8px 8px 0 var(--gold);
+            background: var(--panel);
+            border: 1px solid var(--line);
+            box-shadow: 0 16px 24px rgba(31,42,55,0.08);
             padding: 26px 26px 20px;
             min-height: 560px;
             position: relative;
@@ -312,46 +320,47 @@ $student = [
             width: 280px;
             height: 280px;
             border-radius: 50%;
-            border: 3px solid var(--line);
+            border: 3px solid var(--accent);
             object-fit: cover;
-            box-shadow: 0 0 0 10px rgba(0,0,0,0.06);
+            box-shadow: 0 0 0 10px rgba(45, 64, 85, 0.08);
             background: #ddd;
         }
 
         .online {
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
-            background: var(--gold);
-            border: 3px solid var(--line);
+            background: #40c98f;
+            border: 3px solid #fff;
             right: 66px;
             bottom: 32px;
+            box-shadow: 0 0 0 2px rgba(45, 64, 85, 0.08);
         }
 
         .student-name {
             margin: 0;
             text-align: center;
-            font-family: 'Cormorant Garamond', serif;
             font-weight: 700;
-            font-size: clamp(2.5rem, 3vw, 4rem);
-            line-height: 0.9;
+            font-size: clamp(2rem, 2.8vw, 3rem);
+            line-height: 1.2;
             letter-spacing: -0.04em;
+            color: var(--ink);
         }
 
         .course-pill {
             display: block;
             width: 100%;
             margin-top: 18px;
-            background: var(--ink);
-            color: #f4f0e9;
+            background: var(--accent);
+            color: #fff;
             text-align: center;
-            font-size: 0.92rem;
-            letter-spacing: 0.18em;
-            font-weight: 800;
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            font-weight: 700;
             padding: 14px 0;
             text-transform: uppercase;
-            border: 3px solid var(--line);
+            border: 1px solid var(--accent);
         }
 
         .info-grid {
@@ -361,36 +370,33 @@ $student = [
         }
 
         .info-box {
-            background: rgba(255,255,255,0.08);
-            border: 3px solid rgba(32,32,32,0.8);
+            background: rgba(255,255,255,0.6);
+            border: 1px solid var(--line);
             min-height: 110px;
             padding: 18px 16px 14px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            box-shadow: 0 0 0 1px rgba(32,32,32,0.05);
+            box-shadow: 0 10px 18px rgba(31,42,55,0.02);
         }
 
         .info-label {
             display: block;
-            font-size: 0.9rem;
-            letter-spacing: 0.02em;
-            color: #54514f;
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            color: var(--muted);
             margin-bottom: 10px;
-            font-weight: 600;
-            text-transform: lowercase;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-style: italic;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
         .info-value {
             display: block;
-            font-size: clamp(1.1rem, 1.6vw, 2.4rem);
-            line-height: 1.2;
+            font-size: clamp(1.1rem, 1.4vw, 1.8rem);
+            line-height: 1.3;
             font-weight: 700;
-            letter-spacing: -0.03em;
-            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: -0.02em;
+            color: var(--ink);
         }
 
         .info-box.wide {
